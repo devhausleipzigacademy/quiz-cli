@@ -1,7 +1,9 @@
-import { read, readFileSync } from "fs";
+import { readFileSync } from "fs";
 import * as rs from "readline-sync";
 import { Question, Score } from "./types";
 import chalk from "chalk";
+import { getQuestions } from "./questions";
+import { getScores } from "./scores";
 
 console.log(chalk.green.bold("Welcome to the Quiz!!!\n"));
 const playerName: string = rs.question("What's your name?\n> ");
@@ -9,8 +11,7 @@ console.log(chalk.yellow(`Welcome ${playerName}\n`));
 
 let score = 0;
 
-const file = readFileSync("./questions.json", { encoding: "utf-8" });
-const questions: Question[] = JSON.parse(file);
+const questions: Question[] = getQuestions();
 
 for (let i = 0; i < questions.length; i++) {
   const answer = rs.question(`${questions[i].question}\n> `);
@@ -29,8 +30,7 @@ for (let i = 0; i < questions.length; i++) {
 
 console.log(`Your final score is ${score}\n`);
 
-const scoresFile = readFileSync("./scores.json", { encoding: "utf-8" });
-const scores: Score[] = JSON.parse(scoresFile);
+const scores = getScores();
 
 console.log(chalk.bold("High Score"));
 console.table(scores);
