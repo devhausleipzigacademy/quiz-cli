@@ -1,6 +1,7 @@
 import { readFileSync } from "fs";
 import * as rs from "readline-sync";
 import { Question, Score } from "./types";
+
 // ask the user for a name
 const playerName: string = rs.question("What's your name?\n> ");
 console.log(playerName);
