@@ -1,1 +1,5 @@
-{"Franz":{"score":4,"playthroughs":0},"Agent Smith":{"score":0,"playthroughs":0}}
+{
+	"Franz": { "score": 3, "playthroughs": 10 },
+	"Agent Smith": { "score": 0, "playthroughs": 0 },
+	"grumbo": { "playthroughs": 1, "score": 4 }
+}

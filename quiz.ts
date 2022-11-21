@@ -22,20 +22,54 @@ const questionsJSON = readFileSync("./questions.json", { encoding: "utf8" });
 const players: Players = JSON.parse(playersJSON);
 const questions: Questions = JSON.parse(questionsJSON);
 
-for (let i = 0; i < questions.length; i++) {
-	const questionData = questions[i];
-	const answer = question(questionData.question);
+const userName = question("What is your name?" + "\n");
 
-	if (answer == questionData.answer) {
-		chalk.green("Correct answer!");
-	} else {
-		chalk.red("Wrong answer!");
-	}
+let player: Player | undefined = players[userName];
+
+if (!player) {
+	console.log(chalk.red("Couldn't find player name! Creating new player."));
+	player = { playthroughs: 0, score: 0 };
+
+	players[userName] = player;
+} else {
+	console.log(chalk.green(`Welcome! ${userName}`));
 }
 
-const playerFranz = players["Franz"];
+let playGame = true;
 
-playerFranz.score += 2;
+while (playGame) {
+	const questionsCopy = [...questions];
+
+	for (let i = 0; i < questions.length; i++) {
+		const randomIndex = Math.floor(Math.random() * questionsCopy.length);
+		const questionData = questionsCopy[randomIndex];
+
+		questionsCopy.splice(randomIndex, 1);
+
+		const answer = question(questionData.question + "\n");
+
+		if (answer == questionData.answer) {
+			console.log(chalk.green("Correct answer!"));
+			player.score += 2;
+		} else {
+			console.log(chalk.red("Wrong answer!"));
+			player.score -= 1;
+		}
+	}
+
+	player.playthroughs += 1;
+
+	console.log(chalk.yellow(`Your current score is: `, String(player.score)));
+
+	const againResponse = question("Play again? y/n" + "\n");
+
+	if (
+		againResponse.toLowerCase() == "n" ||
+		againResponse.toLowerCase() == "no"
+	) {
+		playGame = false;
+	}
+}
 
 const newPlayersJSON = JSON.stringify(players);
 

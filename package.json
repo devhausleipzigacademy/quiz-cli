@@ -3,7 +3,6 @@
 	"version": "1.0.0",
 	"description": "A simple CLI quiz tool",
 	"main": "index.js",
-	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -24,8 +23,7 @@
 		"typescript": "^4.9.3"
 	},
 	"dependencies": {
-		"chalk": "^5.1.2",
-		"readline-sync": "^1.4.10",
-		"ts-node": "^10.9.1"
+		"chalk": "2.4.1",
+		"readline-sync": "1.4.10"
 	}
 }

@@ -4,7 +4,11 @@
 		"answer": "42"
 	},
 	{
-		"question": "What is your name?",
+		"question": "Who is the best?",
 		"answer": "Franz"
+	},
+	{
+		"question": "Who is the Queen of France?",
+		"answer": "Trick Question"
 	}
 ]
