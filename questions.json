@@ -1,6 +1,10 @@
 [
-  {
-    "question": "Inside which HTML element do we put the JavaScript?",
-    "answer": "<script>"
-  }
+	{
+		"question": "What is the airspeed velocity of a swallow?",
+		"answer": "42"
+	},
+	{
+		"question": "What is your name?",
+		"answer": "Franz"
+	}
 ]
